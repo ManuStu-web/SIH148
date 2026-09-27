@@ -33,6 +33,16 @@ export function ImportScriptModal({ isOpen, onClose, onImport }: ImportScriptMod
       targetPlatforms: ['Windows Server 2022', 'Ubuntu 24.04 LTS'],
       mutationHash: randomHash,
       description: description.trim() || 'Custom JOCKY forensic extraction routine.',
+      sourceCode: scriptCode.trim() || `// JOCKEY Custom Routine: ${name.trim()}
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Printf("[+] Executing custom forensic routine: %s\\n", "${name.trim()}")
+}`,
+      astStructure: `PackageDeclaration: main\nFunctionDecl: main()\n  └── CustomRoutine(${name.trim()})`,
+      irRepresentation: `entry:\n  t0 = CustomDispatch("${name.trim()}")\n  ret t0`,
     })
 
     setName('')

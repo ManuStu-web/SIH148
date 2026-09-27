@@ -31,6 +31,7 @@ export function DashboardApp() {
     scripts,
     reports,
     evidence,
+    jobs,
     alertsPaused,
     handleRun,
     addEndpoint,
@@ -38,6 +39,8 @@ export function DashboardApp() {
     deleteEndpoint,
     toggleDeployScript,
     importScript,
+    updateScript,
+    deleteScript,
     addReport,
     togglePauseAlerts,
     exportWorkspaceData,
@@ -106,11 +109,14 @@ export function DashboardApp() {
         return (
           <DeployScriptsView
             scripts={scripts}
+            endpoints={endpoints}
             selectedScriptName={selectedScriptName}
             onRun={handleRun}
             onExport={exportWorkspaceData}
             onToggleDeploy={toggleDeployScript}
             onImportScript={importScript}
+            onUpdateScript={updateScript}
+            onDeleteScript={deleteScript}
           />
         )
       case 'Live status':
@@ -160,6 +166,7 @@ export function DashboardApp() {
             onNavigate={setActiveNav}
             onNavigateScript={handleNavigateToScript}
             onOpenAddEndpoint={() => setIsHeaderAddOpen(true)}
+            jobs={jobs}
           />
         )
     }
